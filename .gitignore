@@ -1,0 +1,6 @@
+# IDEA Workspace
+.idea/
+*.iml
+
+# Test file
+src/test.php
