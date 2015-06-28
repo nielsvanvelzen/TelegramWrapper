@@ -1,5 +1,5 @@
 <?php
-namespace Telegram\Api;
+namespace Telegram\Types;
 
 class User{
 	public $id;
