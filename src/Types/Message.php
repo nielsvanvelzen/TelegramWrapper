@@ -6,24 +6,33 @@ class Message
 	/**
 	 * @var int
 	 */
-	private $message_id;
+	public $message_id;
 
 	/**
 	 * @var User
 	 */
-	private $from;
+	public $from;
 
 	/**
 	 * @var GroupChat|User
 	 */
-	private $chat;
+	public $chat;
 
 	/**
 	 * @var int
 	 */
-	private $date;
+	public $date;
 
-	public function __construct($data){
+	/**
+	 * @var string|null
+	 */
+	public $text;
+
+	/**
+	 * @param array $data
+	 */
+	public function __construct($data)
+	{
 		if(isset($data['message_id']))
 			$this->message_id = $data['message_id'];
 
@@ -35,5 +44,8 @@ class Message
 
 		if(isset($data['date']))
 			$this->date = $data['date'];
+
+		if(isset($data['text']))
+			$this->text = $data['text'];
 	}
 }

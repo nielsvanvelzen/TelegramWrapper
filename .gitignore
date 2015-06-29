@@ -3,4 +3,4 @@
 *.iml
 
 # Test file
-src/test.php
+test
