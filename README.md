@@ -1,4 +1,4 @@
-# PHP Telegram Bot
+# PHP Telegram Wrapper
 PHP wrapper for Telegram bots
 
 ## WORK IN PROGRESS
