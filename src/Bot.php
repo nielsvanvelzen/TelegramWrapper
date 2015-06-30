@@ -68,8 +68,6 @@ class Bot{
 		foreach($updates as $update){
 			$highestId = $update->update_id;
 
-			echo $update->message->text . $update->message->from->id;
-
 			if(substr($update->message->text, 0, 1) === '/'){
 				$details = explode(' ', substr($update->message->text, 1));
 				$command = strtolower(array_shift($details));

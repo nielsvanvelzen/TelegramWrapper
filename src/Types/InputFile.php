@@ -54,8 +54,6 @@ class InputFile
 		if($this->mimeType == null){
 			$finfo = new \finfo(FILEINFO_MIME_TYPE);
 			$this->mimeType = $finfo->buffer($this->data);
-
-			echo $this->mimeType;
 		}
 
 		$path = tempnam(sys_get_temp_dir(), 'TELEGRAM') . '.' . str_replace('/', '.', $this->mimeType); //todo fix nasty mimetype -> ext converter
