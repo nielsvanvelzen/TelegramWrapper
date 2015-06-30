@@ -4,6 +4,7 @@ namespace Telegram;
 use Telegram\Commands\CommandCaller;
 use Telegram\Commands\HelpCommand;
 use Telegram\Commands\ICommand;
+use Telegram\Types\Update;
 
 class Bot{
 	/**
@@ -57,8 +58,13 @@ class Bot{
 	public function work($useWebhook = false)
 	{
 		if($useWebhook){
-			//todo Create $updates from webhook
 			$updates = [];
+
+			$input = file_get_contents('php://input');
+			$json = json_decode($input, true);
+
+			if($json !== null)
+				$updates[] = new Update($json);
 		}else{
 			$updates = $this->api->getUpdates();
 		}
