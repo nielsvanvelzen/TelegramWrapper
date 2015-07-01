@@ -77,6 +77,7 @@ class Bot{
 			if(substr($update->message->text, 0, 1) === '/'){
 				$details = explode(' ', substr($update->message->text, 1));
 				$command = strtolower(array_shift($details));
+				$command = explode('@', @$command)[0];
 				$caller = new CommandCaller($this, $update->message);
 
 				if(isset($this->commands[$command]))
