@@ -18,11 +18,18 @@ class Bot{
 	private $commands;
 
 	/**
+	 * @var string[]
+	 */
+	private $aliases;
+
+	/**
 	 * @param string $token
 	 */
 	public function __construct($token){
 		$this->api = new Api($token);
 		$this->commands = [];
+		$this->aliases = [];
+
 		$this->addCommand('help', new HelpCommand());
 	}
 
@@ -37,11 +44,33 @@ class Bot{
 	/**
 	 * @param string $name
 	 * @param ICommand $command
+	 *
+	 * @return bool
 	 */
 	public function addCommand($name, $command)
 	{
-		if($command instanceof ICommand)
-			$this->commands[$name] = $command;
+		if(!$command instanceof ICommand)
+			return false;
+
+		$this->commands[$name] = $command;
+		return true;
+	}
+
+	/**
+	 * @param string $name
+	 */
+	public function removeCommand($name)
+	{
+		unset($this->commands[$name]);
+	}
+
+	/**
+	 * @param string $alias
+	 * @param string $command
+	 */
+	public function addAlias($alias, $command)
+	{
+		$this->aliases[$alias] = $command;
 	}
 
 	/**
@@ -79,6 +108,9 @@ class Bot{
 				$command = strtolower(array_shift($details));
 				$command = explode('@', @$command)[0];
 				$caller = new CommandCaller($this, $update->message);
+
+				if(isset($this->aliases[$command]))
+					$command = $this->aliases[$command];
 
 				if(isset($this->commands[$command]))
 					$this->commands[$command]->call($command, $details, $caller);

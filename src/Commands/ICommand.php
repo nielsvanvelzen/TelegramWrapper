@@ -5,7 +5,7 @@ interface ICommand
 {
 	/**
 	 * @param string $name
-	 * @param mixed[] $arguments
+	 * @param string[] $arguments
 	 * @param CommandCaller $caller
 	 */
 	public function call($name, $arguments, $caller);

@@ -48,4 +48,11 @@ class Message
 		if(isset($data['text']))
 			$this->text = $data['text'];
 	}
+
+	/**
+	 * @return bool
+	 */
+	public function isInGroupChat(){
+		return $this->chat instanceof GroupChat;
+	}
 }
