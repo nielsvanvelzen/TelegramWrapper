@@ -1,5 +1,5 @@
 {
-	"name": "HetIsNiels/TelegramWrapper",
+	"name": "hetisniels/telegram-wrapper",
 
 	"require": {
 		"php": ">=5.4.0"
