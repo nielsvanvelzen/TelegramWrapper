@@ -1,5 +1,8 @@
 {
 	"name": "hetisniels/telegram-wrapper",
+	"description": "PHP wrapper for Telegram bots",
+
+	"license": "GPL-2.0",
 
 	"require": {
 		"php": ">=5.4.0"
