@@ -1,11 +1,11 @@
 <?php
 namespace Telegram\Types;
 
-class User{
+class Contact{
 	/**
-	 * @var int
+	 * @var string
 	 */
-	public $id;
+	public $phone_number;
 
 	/**
 	 * @var string
@@ -13,18 +13,18 @@ class User{
 	public $first_name;
 
 	/**
-	 * @var string
+	 * @var string|null
 	 */
 	public $last_name;
 
 	/**
-	 * @var string
+	 * @var string|null
 	 */
-	public $username;
+	public $user_id;
 
 	public function __construct($data){
-		if(isset($data['id']))
-			$this->id = intval($data['id']);
+		if(isset($data['phone_number']))
+			$this->phone_number = $data['phone_number'];
 
 		if(isset($data['first_name']))
 			$this->first_name = $data['first_name'];
@@ -32,7 +32,7 @@ class User{
 		if(isset($data['last_name']))
 			$this->last_name = $data['last_name'];
 
-		if(isset($data['username']))
-			$this->username = $data['username'];
+		if(isset($data['user_id']))
+			$this->user_id = $data['v'];
 	}
 }

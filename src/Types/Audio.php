@@ -1,7 +1,7 @@
 <?php
 namespace Telegram\Types;
 
-class PhotoSize
+class Audio
 {
 	/**
 	 * @var string
@@ -9,17 +9,17 @@ class PhotoSize
 	public $file_id;
 
 	/**
-	 * @var int
+	 * @var int|null
 	 */
-	public $width;
+	public $duration;
 
 	/**
-	 * @var int
+	 * @var string|null
 	 */
-	public $height;
+	public $mime_type;
 
 	/**
-	 * @var int
+	 * @var int|null
 	 */
 	public $file_size;
 
@@ -27,11 +27,11 @@ class PhotoSize
 		if(isset($data['file_id']))
 			$this->file_id = $data['file_id'];
 
-		if(isset($data['width']))
-			$this->width = intval($data['width']);
+		if(isset($data['duration']))
+			$this->duration = intval($data['duration']);
 
-		if(isset($data['height']))
-			$this->height = intval($data['height']);
+		if(isset($data['mime_type']))
+			$this->mime_type = $data['mime_type'];
 
 		if(isset($data['file_size']))
 			$this->file_size = intval($data['file_size']);

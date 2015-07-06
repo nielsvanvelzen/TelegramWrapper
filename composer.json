@@ -1,14 +1,25 @@
 {
 	"name": "hetisniels/telegram-wrapper",
 	"description": "PHP wrapper for Telegram bots",
+	"keywords": ["telegram", "bot", "wrapper"],
 
 	"license": "GPL-2.0",
+	"authors": [
+		{
+			"name": "Niels van Velzen",
+			"email": "info@nielsvanvelzen.me",
+			"homepage": "http://nielsvanvelzen.me",
+			"role": "Developer"
+		}
+	],
 
 	"require": {
 		"php": ">=5.4.0"
 	},
 
 	"autoload": {
-		"psr-4": {"Telegam\\": "src/"}
+		"psr-4": {
+			"Telegram": "src"
+		}
 	}
 }

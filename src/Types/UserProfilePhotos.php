@@ -3,7 +3,14 @@ namespace Telegram\Types;
 
 class UserProfilePhotos
 {
+	/**
+	 * @var int
+	 */
 	public $total_count;
+
+	/**
+	 * @var ArrayOfArrayOfPhotoSize
+	 */
 	public $photos;
 
 	public function __construct($data){
@@ -11,20 +18,6 @@ class UserProfilePhotos
 			$this->total_count = $data['total_count'];
 
 		if(isset($data['photos']))
-		{
-			$this->photos = [];
-
-			foreach($data['photos'] as $apiCollection)
-			{
-				$collection = [];
-
-				foreach($apiCollection as $photo)
-				{
-					$collection[] = new PhotoSize($photo);
-				}
-
-				$this->photos[] = $collection;
-			}
-		}
+			$this->photos = new ArrayOfArrayOfPhotoSize($data['photos']);
 	}
 }

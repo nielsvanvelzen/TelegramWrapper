@@ -5,7 +5,14 @@ use CURLFile;
 
 class InputFile
 {
+	/**
+	 * @var string
+	 */
 	private $data;
+
+	/**
+	 * @var string|null
+	 */
 	private $mimeType;
 
 	public function __construct($data, $mimeType = null)

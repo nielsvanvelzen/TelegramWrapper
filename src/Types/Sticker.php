@@ -1,7 +1,7 @@
 <?php
 namespace Telegram\Types;
 
-class PhotoSize
+class Sticker
 {
 	/**
 	 * @var string
@@ -19,7 +19,12 @@ class PhotoSize
 	public $height;
 
 	/**
-	 * @var int
+	 * @var PhotoSize
+	 */
+	public $thumb;
+
+	/**
+	 * @var int|null
 	 */
 	public $file_size;
 
@@ -32,6 +37,9 @@ class PhotoSize
 
 		if(isset($data['height']))
 			$this->height = intval($data['height']);
+
+		if(isset($data['thumb']))
+			$this->thumb = new PhotoSize($data['thumb']);
 
 		if(isset($data['file_size']))
 			$this->file_size = intval($data['file_size']);
