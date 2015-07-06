@@ -260,7 +260,7 @@ class Api{
 	 */
 	public function setWebhook($url = null)
 	{
-		return $this->request('setWebhook', [
+		$this->request('setWebhook', [
 			'url' => $url
 		]);
 	}
