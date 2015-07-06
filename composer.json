@@ -1,7 +1,8 @@
 {
 	"name": "hetisniels/telegram-wrapper",
 	"description": "PHP wrapper for Telegram bots",
-	"keywords": ["telegram", "bot", "wrapper"],
+	"keywords": ["telegram", "bot", "wrapper", "telegram bot", "telegram api", "telegram wrapper", "telegram sdk"],
+	"homepage": "https://github.com/HetIsNiels/TelegramWrapper",
 
 	"license": "GPL-2.0",
 	"authors": [
