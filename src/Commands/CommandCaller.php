@@ -77,18 +77,9 @@ class CommandCaller
 	/**
 	 * @param string $message
 	 * @param bool $forwarded
-	 *
-	 * todo support media types (sticker, video, location etc.)
 	 */
 	public function reply($message, $forwarded = false)
 	{
-		if($message instanceof PhotoSize)
-		{
-			$this->bot->getApi()->sendPhoto($this->chat->id, $message->file_id);
-		}
-		else
-		{
-			$this->bot->getApi()->sendMessage($this->chat->id, $message, null, ($forwarded ? $this->message->message_id : null), null);
-		}
+		$this->bot->getApi()->sendMessage($this->chat->id, $message, null, ($forwarded ? $this->message->message_id : null), null);
 	}
 }

@@ -2,5 +2,8 @@
 .idea/
 *.iml
 
+# Composer
+vendor/
+
 # Test file
 test
