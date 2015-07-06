@@ -23,17 +23,18 @@ class PhotoSize
 	 */
 	public $file_size;
 
-	public function __construct($data){
-		if(isset($data['file_id']))
+	public function __construct($data)
+	{
+		if (isset($data['file_id']))
 			$this->file_id = $data['file_id'];
 
-		if(isset($data['width']))
+		if (isset($data['width']))
 			$this->width = intval($data['width']);
 
-		if(isset($data['height']))
+		if (isset($data['height']))
 			$this->height = intval($data['height']);
 
-		if(isset($data['file_size']))
+		if (isset($data['file_size']))
 			$this->file_size = intval($data['file_size']);
 	}
 }

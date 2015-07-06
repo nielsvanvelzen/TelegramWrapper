@@ -13,11 +13,12 @@ class Update
 	 */
 	public $message;
 
-	public function __construct($data){
-		if(isset($data['update_id']))
+	public function __construct($data)
+	{
+		if (isset($data['update_id']))
 			$this->update_id = intval($data['update_id']);
 
-		if(isset($data['message']))
+		if (isset($data['message']))
 			$this->message = new Message($data['message']);
 	}
 }

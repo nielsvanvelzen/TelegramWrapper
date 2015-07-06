@@ -1,7 +1,8 @@
 <?php
 namespace Telegram\Types;
 
-class GroupChat{
+class GroupChat
+{
 	/**
 	 * @var int
 	 */
@@ -12,11 +13,12 @@ class GroupChat{
 	 */
 	public $title;
 
-	public function __construct($data){
-		if(isset($data['id']))
+	public function __construct($data)
+	{
+		if (isset($data['id']))
 			$this->id = intval($data['id']);
 
-		if(isset($data['title']))
+		if (isset($data['title']))
 			$this->title = $data['title'];
 	}
 }

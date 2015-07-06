@@ -2,10 +2,10 @@
 namespace Telegram\Commands;
 
 use Telegram\Bot;
+use Telegram\Types\GroupChat;
 use Telegram\Types\Message;
 use Telegram\Types\PhotoSize;
 use Telegram\Types\User;
-use Telegram\Types\GroupChat;
 
 class CommandCaller
 {

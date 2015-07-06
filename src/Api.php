@@ -7,7 +7,8 @@ use Telegram\Types\Update;
 use Telegram\Types\User;
 use Telegram\Types\UserProfilePhotos;
 
-class Api{
+class Api
+{
 	private $apiUrl = 'https://api.telegram.org/bot';
 	private $ch;
 
@@ -29,9 +30,9 @@ class Api{
 		curl_setopt($this->ch, CURLOPT_SSL_VERIFYPEER, false);
 		curl_setopt($this->ch, CURLOPT_SSL_VERIFYHOST, false);
 
-		if(!empty($arguments)){
-			foreach($arguments as $key => &$argument)
-				if($argument instanceof InputFile)
+		if (!empty($arguments)) {
+			foreach ($arguments as $key => &$argument)
+				if ($argument instanceof InputFile)
 					$argument = $argument->getCURLFile();
 
 			curl_setopt($this->ch, CURLOPT_POST, true);
@@ -42,7 +43,7 @@ class Api{
 
 		$json = json_decode($content, true);
 
-		if(!isset($json['ok']) || $json['ok'] == false)
+		if (!isset($json['ok']) || $json['ok'] == false)
 			return [];
 
 		return $json['result'];
@@ -249,7 +250,7 @@ class Api{
 
 		$updates = [];
 
-		foreach($data as $update)
+		foreach ($data as $update)
 			$updates[] = new Update($update);
 
 		return $updates;

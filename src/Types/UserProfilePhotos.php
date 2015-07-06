@@ -13,11 +13,12 @@ class UserProfilePhotos
 	 */
 	public $photos;
 
-	public function __construct($data){
-		if(isset($data['total_count']))
+	public function __construct($data)
+	{
+		if (isset($data['total_count']))
 			$this->total_count = $data['total_count'];
 
-		if(isset($data['photos']))
+		if (isset($data['photos']))
 			$this->photos = new ArrayOfArrayOfPhotoSize($data['photos']);
 	}
 }

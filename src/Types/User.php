@@ -1,7 +1,8 @@
 <?php
 namespace Telegram\Types;
 
-class User{
+class User
+{
 	/**
 	 * @var int
 	 */
@@ -22,17 +23,18 @@ class User{
 	 */
 	public $username;
 
-	public function __construct($data){
-		if(isset($data['id']))
+	public function __construct($data)
+	{
+		if (isset($data['id']))
 			$this->id = intval($data['id']);
 
-		if(isset($data['first_name']))
+		if (isset($data['first_name']))
 			$this->first_name = $data['first_name'];
 
-		if(isset($data['last_name']))
+		if (isset($data['last_name']))
 			$this->last_name = $data['last_name'];
 
-		if(isset($data['username']))
+		if (isset($data['username']))
 			$this->username = $data['username'];
 	}
 }

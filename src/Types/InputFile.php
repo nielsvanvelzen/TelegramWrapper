@@ -22,6 +22,16 @@ class InputFile
 	}
 
 	/**
+	 * @param string $filename
+	 *
+	 * @return InputFile
+	 */
+	public static function fromFile($filename)
+	{
+		return new InputFile(file_get_contents($filename));
+	}
+
+	/**
 	 * @return string
 	 */
 	public function getData()
@@ -58,7 +68,7 @@ class InputFile
 	 */
 	public function getCURLFile()
 	{
-		if($this->mimeType == null){
+		if ($this->mimeType == null) {
 			$finfo = new \finfo(FILEINFO_MIME_TYPE);
 			$this->mimeType = $finfo->buffer($this->data);
 		}
@@ -67,15 +77,5 @@ class InputFile
 		file_put_contents($path, $this->data);
 
 		return curl_file_create($path, $this->mimeType);
-	}
-
-	/**
-	 * @param string $filename
-	 *
-	 * @return InputFile
-	 */
-	public static function fromFile($filename)
-	{
-		return new InputFile(file_get_contents($filename));
 	}
 }
