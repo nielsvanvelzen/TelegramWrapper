@@ -14,7 +14,7 @@ class HelpCommand implements ICommand
 		$asReply = true;
 		$commands = $caller->getBot()->getCommands();
 
-		if (isset($arguments[0])) {
+		if ($name == 'help' && isset($arguments[0])) {
 			if (strtolower($arguments[0]) == 'botfather') {
 				$asReply = false;
 
@@ -32,7 +32,7 @@ class HelpCommand implements ICommand
 					if (strpos($name, $arguments[0]) !== false) {
 						$matches++;
 
-						$response .= sprintf('/%s - %s' . PHP_EOL, $name, $handler->getDescription());
+						$response .= sprintf('/%s - %s' . PHP_EOL, str_replace('<command>', $name, $handler->getUsage()), $handler->getDescription());
 					}
 				}
 
@@ -46,7 +46,7 @@ class HelpCommand implements ICommand
 			$response .= 'This bot uses the following commands: ' . PHP_EOL . PHP_EOL;
 
 			foreach ($commands as $name => $handler) {
-				$response .= sprintf('/%s - %s' . PHP_EOL, $name, $handler->getDescription());
+				$response .= sprintf('/%s - %s' . PHP_EOL, str_replace('<command>', $name, $handler->getUsage()), $handler->getDescription());
 			}
 		}
 
@@ -59,5 +59,13 @@ class HelpCommand implements ICommand
 	public function getDescription()
 	{
 		return 'Returns list of bot commands';
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getUsage()
+	{
+		return '<command> [query]';
 	}
 }

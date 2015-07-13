@@ -4,7 +4,7 @@ namespace Telegram\Types;
 class ArrayOfArrayOfPhotoSize
 {
 	/**
-	 * @var PhotoSize[]
+	 * @var ArrayOfPhotoSize[]
 	 */
 	public $photos;
 
