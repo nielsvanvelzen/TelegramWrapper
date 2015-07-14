@@ -1,7 +1,7 @@
 <?php
 namespace Telegram\Types;
 
-class UserProfilePhotos
+class UserProfilePhotos extends IType
 {
 	/**
 	 * @var int

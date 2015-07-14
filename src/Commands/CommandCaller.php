@@ -2,9 +2,12 @@
 namespace Telegram\Commands;
 
 use Telegram\Bot;
+use Telegram\Types\ForceReply;
 use Telegram\Types\GroupChat;
 use Telegram\Types\Message;
 use Telegram\Types\PhotoSize;
+use Telegram\Types\ReplyKeyboardHide;
+use Telegram\Types\ReplyKeyboardMarkup;
 use Telegram\Types\User;
 
 class CommandCaller
@@ -77,9 +80,10 @@ class CommandCaller
 	/**
 	 * @param string $message
 	 * @param bool $forwarded
+	 * @param ReplyKeyboardMarkup|ReplyKeyboardHide|ForceReply $reply_markup
 	 */
-	public function reply($message, $forwarded = false)
+	public function reply($message, $forwarded = false, $reply_markup = null)
 	{
-		$this->bot->getApi()->sendMessage($this->chat->id, $message, null, ($forwarded ? $this->message->message_id : null), null);
+		$this->bot->getApi()->sendMessage($this->chat->id, $message, null, ($forwarded ? $this->message->message_id : null), $reply_markup);
 	}
 }

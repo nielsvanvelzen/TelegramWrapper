@@ -1,7 +1,7 @@
 <?php
 namespace Telegram\Types;
 
-class GroupChat
+class GroupChat extends IType
 {
 	/**
 	 * @var int

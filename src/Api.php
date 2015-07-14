@@ -1,8 +1,12 @@
 <?php
 namespace Telegram;
 
+use Telegram\Types\ForceReply;
 use Telegram\Types\InputFile;
+use Telegram\Types\IType;
 use Telegram\Types\Message;
+use Telegram\Types\ReplyKeyboardHide;
+use Telegram\Types\ReplyKeyboardMarkup;
 use Telegram\Types\Update;
 use Telegram\Types\User;
 use Telegram\Types\UserProfilePhotos;
@@ -34,6 +38,8 @@ class Api
 			foreach ($arguments as $key => &$argument)
 				if ($argument instanceof InputFile)
 					$argument = $argument->getCURLFile();
+				else if($argument instanceof IType)
+					$argument = $argument->toJSON();
 
 			curl_setopt($this->ch, CURLOPT_POST, true);
 			curl_setopt($this->ch, CURLOPT_POSTFIELDS, $arguments);
@@ -62,7 +68,7 @@ class Api
 	 * @param string $text
 	 * @param bool $disable_web_page_preview
 	 * @param int $reply_to_message_id
-	 * @param null $reply_markup
+	 * @param ReplyKeyboardMarkup|ReplyKeyboardHide|ForceReply $reply_markup
 	 *
 	 * @return Message
 	 */
@@ -98,7 +104,7 @@ class Api
 	 * @param string|InputFile $photo
 	 * @param null $caption
 	 * @param int $reply_to_message_id
-	 * @param null $reply_markup
+	 * @param ReplyKeyboardMarkup|ReplyKeyboardHide|ForceReply $reply_markup
 	 *
 	 * @return Message
 	 */
@@ -117,7 +123,7 @@ class Api
 	 * @param int $chat_id
 	 * @param string|InputFile $audio
 	 * @param int $reply_to_message_id
-	 * @param null $reply_markup
+	 * @param ReplyKeyboardMarkup|ReplyKeyboardHide|ForceReply $reply_markup
 	 *
 	 * @return Message
 	 */
@@ -135,7 +141,7 @@ class Api
 	 * @param int $chat_id
 	 * @param string|InputFile $document
 	 * @param int $reply_to_message_id
-	 * @param null $reply_markup
+	 * @param ReplyKeyboardMarkup|ReplyKeyboardHide|ForceReply $reply_markup
 	 *
 	 * @return Message
 	 */
@@ -153,7 +159,7 @@ class Api
 	 * @param int $chat_id
 	 * @param string|InputFile $sticker
 	 * @param int $reply_to_message_id
-	 * @param null $reply_markup
+	 * @param ReplyKeyboardMarkup|ReplyKeyboardHide|ForceReply $reply_markup
 	 *
 	 * @return Message
 	 */
@@ -171,7 +177,7 @@ class Api
 	 * @param int $chat_id
 	 * @param string|InputFile $video
 	 * @param int $reply_to_message_id
-	 * @param null $reply_markup
+	 * @param ReplyKeyboardMarkup|ReplyKeyboardHide|ForceReply $reply_markup
 	 *
 	 * @return Message
 	 */
@@ -190,7 +196,7 @@ class Api
 	 * @param float $latitude
 	 * @param float $longitude
 	 * @param int $reply_to_message_id
-	 * @param null $reply_markup
+	 * @param ReplyKeyboardMarkup|ReplyKeyboardHide|ForceReply $reply_markup
 	 *
 	 * @return Message
 	 */

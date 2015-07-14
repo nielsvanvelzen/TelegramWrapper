@@ -1,7 +1,7 @@
 <?php
 namespace Telegram\Types;
 
-class Sticker
+class Sticker extends IType
 {
 	/**
 	 * @var string

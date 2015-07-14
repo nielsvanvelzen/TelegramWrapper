@@ -1,7 +1,7 @@
 <?php
 namespace Telegram\Types;
 
-class User
+class User extends IType
 {
 	/**
 	 * @var int

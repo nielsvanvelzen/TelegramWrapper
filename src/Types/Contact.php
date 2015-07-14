@@ -1,7 +1,7 @@
 <?php
 namespace Telegram\Types;
 
-class Contact
+class Contact extends IType
 {
 	/**
 	 * @var string

@@ -1,7 +1,7 @@
 <?php
 namespace Telegram\Types;
 
-class Video
+class Video extends IType
 {
 	/**
 	 * @var string

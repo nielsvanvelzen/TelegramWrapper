@@ -1,7 +1,7 @@
 <?php
 namespace Telegram\Types;
 
-class PhotoSize
+class PhotoSize extends IType
 {
 	/**
 	 * @var string

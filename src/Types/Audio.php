@@ -1,7 +1,7 @@
 <?php
 namespace Telegram\Types;
 
-class Audio
+class Audio extends IType
 {
 	/**
 	 * @var string

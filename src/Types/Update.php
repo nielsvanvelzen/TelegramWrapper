@@ -1,7 +1,7 @@
 <?php
 namespace Telegram\Types;
 
-class Update
+class Update extends IType
 {
 	/**
 	 * @var int

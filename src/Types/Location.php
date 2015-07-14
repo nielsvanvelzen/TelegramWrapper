@@ -1,7 +1,7 @@
 <?php
 namespace Telegram\Types;
 
-class Location
+class Location extends IType
 {
 	/**
 	 * @var float

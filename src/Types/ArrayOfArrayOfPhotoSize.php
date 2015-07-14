@@ -1,7 +1,7 @@
 <?php
 namespace Telegram\Types;
 
-class ArrayOfArrayOfPhotoSize
+class ArrayOfArrayOfPhotoSize extends IType
 {
 	/**
 	 * @var ArrayOfPhotoSize[]

@@ -1,7 +1,7 @@
 <?php
 namespace Telegram\Types;
 
-class Message
+class Message extends IType
 {
 	/**
 	 * @var int

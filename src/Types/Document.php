@@ -1,7 +1,7 @@
 <?php
 namespace Telegram\Types;
 
-class Document
+class Document extends IType
 {
 	/**
 	 * @var string

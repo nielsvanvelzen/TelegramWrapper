@@ -3,7 +3,7 @@ namespace Telegram\Types;
 
 use CURLFile;
 
-class InputFile
+class InputFile extends IType
 {
 	/**
 	 * @var string
