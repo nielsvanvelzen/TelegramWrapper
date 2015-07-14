@@ -1,7 +1,7 @@
 <?php
 namespace Telegram\Types;
 
-class ForceReply{
+class ForceReply extends IType{
 	/**
 	 * @var true
 	 */
@@ -12,6 +12,10 @@ class ForceReply{
 	 */
 	public $selective;
 
+	/**
+	 * @param bool $force_reply
+	 * @param bool $selective
+	 */
 	public function __construct($force_reply = true, $selective = false){
 		$this->force_reply = $force_reply;
 		$this->selective = $selective;

@@ -15,6 +15,7 @@ $ composer require hetisniels/telegram-wrapper
 **Without Composer**
 
 It is possible you dont like Composer or you just want to get the source and use it. In this case download the latest release in releases page.
+Note: You need to make your own autoloader for this to work!
 
 ## Sample usage
 ### Telegram\Bot
@@ -24,12 +25,20 @@ class HelloWorldCommand implements \Telegram\Commands\ICommand
 {
 	public function call($name, $arguments, $caller)
 	{
-		$caller->reply('Hello World!');
+		$keyboard = new KeyboardBuilder();
+		$keyboard = $keyboard->button('A')->button('B')->row()->button('C')->button('D')->row()->setResizable(true)->setOneTime(true)->keyboard();
+		
+		$caller->reply('Hello World!', false, $keyboard);
 	}
 	
 	public function getDescription()
 	{
 		return 'Sends the popular "Hello World" text.';
+	}
+	
+	public function getUsage()
+	{
+		return '<command>';
 	}
 }
 
@@ -38,6 +47,7 @@ $bot->addCommand('helloworld', new HelloWorldCommand());
 $bot->work();
 ```
 And now, just send te message "/helloworld" to the bot!
+![KeyboardBuilder result](http://ndat.nl/f1436874735.png)
 
 ### Telegram\Api
 ``` php
