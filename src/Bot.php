@@ -5,6 +5,7 @@ use Telegram\Commands\CommandCaller;
 use Telegram\Commands\HelpCommand;
 use Telegram\Commands\ICommand;
 use Telegram\Types\Update;
+use Telegram\Util\KeyboardBuilder;
 
 class Bot
 {
@@ -42,7 +43,6 @@ class Bot
 	{
 		return $this->api;
 	}
-
 
 	/**
 	 * @param string $name
@@ -82,6 +82,14 @@ class Bot
 	public function getCommands()
 	{
 		return $this->commands;
+	}
+
+	/**
+	 * @return KeyboardBuilder
+	 */
+	public function createKeyboard()
+	{
+		return new KeyboardBuilder();
 	}
 
 	/**

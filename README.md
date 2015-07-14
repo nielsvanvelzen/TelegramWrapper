@@ -25,7 +25,7 @@ class HelloWorldCommand implements \Telegram\Commands\ICommand
 {
 	public function call($name, $arguments, $caller)
 	{
-		$keyboard = new KeyboardBuilder();
+		$keyboard = $caller->getBot()->createKeyboard(); // Alternative: $keyboard = new KeyboardBuilder();
 		$keyboard = $keyboard->button('A')->button('B')->row()->button('C')->button('D')->row()->setResizable(true)->setOneTime(true)->keyboard();
 		
 		$caller->reply('Hello World!', false, $keyboard);
