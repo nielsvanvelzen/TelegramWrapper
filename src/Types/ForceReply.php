@@ -12,6 +12,11 @@ class ForceReply{
 	 */
 	public $selective;
 
+	public function __construct($force_reply = true, $selective = false){
+		$this->force_reply = $force_reply;
+		$this->selective = $selective;
+	}
+
 	/**
 	 * @return string
 	 */

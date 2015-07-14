@@ -24,6 +24,19 @@ class ReplyKeyboardMarkup extends IType
 	public $selective;
 
 	/**
+	 * @param string[][] $keyboard
+	 * @param bool $resize_keyboard
+	 * @param bool $one_time_keyboard
+	 * @param bool $selective
+	 */
+	public function __construct($keyboard, $resize_keyboard = false, $one_time_keyboard = false, $selective = false){
+		$this->keyboard = $keyboard;
+		$this->resize_keyboard = $resize_keyboard;
+		$this->one_time_keyboard = $one_time_keyboard;
+		$this->selective = $selective;
+	}
+
+	/**
 	 * @return string
 	 */
 	public function toJSON()
