@@ -1,7 +1,8 @@
 <?php
 namespace Telegram\Types;
 
-class ForceReply extends IType{
+class ForceReply extends IType
+{
 	/**
 	 * @var true
 	 */
@@ -16,7 +17,8 @@ class ForceReply extends IType{
 	 * @param bool $force_reply
 	 * @param bool $selective
 	 */
-	public function __construct($force_reply = true, $selective = false){
+	public function __construct($force_reply = true, $selective = false)
+	{
 		$this->force_reply = $force_reply;
 		$this->selective = $selective;
 	}
@@ -24,7 +26,8 @@ class ForceReply extends IType{
 	/**
 	 * @return string
 	 */
-	public function toJSON(){
+	public function toJSON()
+	{
 		return json_encode([
 			'force_reply' => $this->force_reply,
 			'selective' => $this->selective

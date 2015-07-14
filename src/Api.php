@@ -13,9 +13,19 @@ use Telegram\Types\UserProfilePhotos;
 
 class Api
 {
+	/**
+	 * @var string
+	 */
 	private $apiUrl = 'https://api.telegram.org/bot';
+
+	/**
+	 * @var resource
+	 */
 	private $ch;
 
+	/**
+	 * @var string
+	 */
 	private $token;
 
 	/**
@@ -27,6 +37,12 @@ class Api
 		$this->ch = curl_init();
 	}
 
+	/**
+	 * @param string $method
+	 * @param array $arguments
+	 *
+	 * @return array
+	 */
 	private function request($method, $arguments = [])
 	{
 		curl_setopt($this->ch, CURLOPT_URL, $this->apiUrl . $this->token . '/' . $method);
@@ -38,7 +54,7 @@ class Api
 			foreach ($arguments as $key => &$argument)
 				if ($argument instanceof InputFile)
 					$argument = $argument->getCURLFile();
-				else if($argument instanceof IType)
+				else if ($argument instanceof IType)
 					$argument = $argument->toJSON();
 
 			curl_setopt($this->ch, CURLOPT_POST, true);

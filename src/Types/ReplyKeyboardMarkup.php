@@ -29,7 +29,8 @@ class ReplyKeyboardMarkup extends IType
 	 * @param bool $one_time_keyboard
 	 * @param bool $selective
 	 */
-	public function __construct($keyboard, $resize_keyboard = false, $one_time_keyboard = false, $selective = false){
+	public function __construct($keyboard, $resize_keyboard = false, $one_time_keyboard = false, $selective = false)
+	{
 		$this->keyboard = $keyboard;
 		$this->resize_keyboard = $resize_keyboard;
 		$this->one_time_keyboard = $one_time_keyboard;

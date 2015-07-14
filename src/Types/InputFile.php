@@ -8,59 +8,30 @@ class InputFile extends IType
 	/**
 	 * @var string
 	 */
-	private $data;
+	private $file;
 
 	/**
-	 * @var string|null
+	 * @param string $file
 	 */
-	private $mimeType;
-
-	public function __construct($data, $mimeType = null)
+	public function __construct($file)
 	{
-		$this->data = $data;
-		$this->mimeType = $mimeType;
-	}
-
-	/**
-	 * @param string $filename
-	 *
-	 * @return InputFile
-	 */
-	public static function fromFile($filename)
-	{
-		return new InputFile(file_get_contents($filename));
+		$this->file = $file;
 	}
 
 	/**
 	 * @return string
 	 */
-	public function getData()
+	public function getFile()
 	{
-		return $this->data;
+		return $this->file;
 	}
 
 	/**
-	 * @param string $data
+	 * @param string $file
 	 */
-	public function setData($data)
+	public function setFile($file)
 	{
-		$this->data = $data;
-	}
-
-	/**
-	 * @return string
-	 */
-	public function getMimeType()
-	{
-		return $this->mimeType;
-	}
-
-	/**
-	 * @param string $mimeType
-	 */
-	public function setMimeType($mimeType)
-	{
-		$this->mimeType = $mimeType;
+		$this->file = $file;
 	}
 
 	/**
@@ -68,14 +39,6 @@ class InputFile extends IType
 	 */
 	public function getCURLFile()
 	{
-		if ($this->mimeType == null) {
-			$finfo = new \finfo(FILEINFO_MIME_TYPE);
-			$this->mimeType = $finfo->buffer($this->data);
-		}
-
-		$path = tempnam(sys_get_temp_dir(), 'TELEGRAM') . '.' . str_replace('/', '.', $this->mimeType); //todo fix nasty mimetype -> ext converter
-		file_put_contents($path, $this->data);
-
-		return curl_file_create($path, $this->mimeType);
+		return new CURLFile($this->file);
 	}
 }

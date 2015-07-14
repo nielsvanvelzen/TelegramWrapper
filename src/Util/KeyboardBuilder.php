@@ -16,8 +16,19 @@ class KeyboardBuilder
 	 */
 	private $row = [];
 
+	/**
+	 * @var bool
+	 */
 	private $resize_keyboard = true;
+
+	/**
+	 * @var bool
+	 */
 	private $one_time_keyboard = true;
+
+	/**
+	 * @var bool
+	 */
 	private $selective = false;
 
 	/**
@@ -33,6 +44,7 @@ class KeyboardBuilder
 
 	/**
 	 * @param string $text
+	 *
 	 * @return KeyboardBuilder
 	 */
 	public function button($text)
@@ -55,6 +67,7 @@ class KeyboardBuilder
 
 	/**
 	 * @param bool $resize_keyboard
+	 *
 	 * @return KeyboardBuilder
 	 */
 	public function setResizable($resize_keyboard)
@@ -66,6 +79,7 @@ class KeyboardBuilder
 
 	/**
 	 * @param bool $one_time_keyboard
+	 *
 	 * @return KeyboardBuilder
 	 */
 	public function setOneTime($one_time_keyboard)
@@ -77,6 +91,7 @@ class KeyboardBuilder
 
 	/**
 	 * @param bool $selective
+	 *
 	 * @return KeyboardBuilder
 	 */
 	public function setSelective($selective)

@@ -17,7 +17,8 @@ class ReplyKeyboardHide extends IType
 	 * @param bool $hide_keyboard
 	 * @param bool $selective
 	 */
-	public function __construct($hide_keyboard = true, $selective = false){
+	public function __construct($hide_keyboard = true, $selective = false)
+	{
 		$this->hide_keyboard = $hide_keyboard;
 		$this->selective = $selective;
 	}
