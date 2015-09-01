@@ -4,6 +4,7 @@ namespace Telegram;
 use Telegram\Commands\CommandCaller;
 use Telegram\Commands\HelpCommand;
 use Telegram\Commands\ICommand;
+use Telegram\Commands\IFilter;
 use Telegram\Types\Update;
 use Telegram\Util\KeyboardBuilder;
 
@@ -20,6 +21,11 @@ class Bot
 	private $commands;
 
 	/**
+	 * @var IFilter[]
+	 */
+	private $filters;
+
+	/**
 	 * @var string[]
 	 */
 	private $aliases;
@@ -31,6 +37,7 @@ class Bot
 	{
 		$this->api = new Api($token);
 		$this->commands = [];
+		$this->filters = [];
 		$this->aliases = [];
 
 		$this->addCommand('help', new HelpCommand());
@@ -65,6 +72,28 @@ class Bot
 	public function removeCommand($name)
 	{
 		unset($this->commands[$name]);
+	}
+
+	/**
+	 * @param IFilter $filter
+	 *
+	 * @return bool
+	 */
+	public function addFilter($filter)
+	{
+		if (!$filter instanceof IFilter)
+			return false;
+
+		$this->filters[] = $filter;
+		return true;
+	}
+
+	/**
+	 * @param IFilter $filter
+	 */
+	public function removeFilter($filter)
+	{
+		//todo
 	}
 
 	/**
@@ -113,12 +142,23 @@ class Bot
 
 		foreach ($updates as $update) {
 			$highestId = $update->update_id;
+			$caller = new CommandCaller($this, $update->message);
+			$cancel = false;
+
+			foreach($this->filters as $filter){
+				if(!$filter->filter($update->message, $caller)) {
+					$cancel = true;
+					break;
+				}
+			}
+
+			if($cancel)
+				continue;
 
 			if (substr($update->message->text, 0, 1) === '/') {
 				$details = explode(' ', substr($update->message->text, 1));
 				$command = strtolower(array_shift($details));
 				$command = explode('@', @$command)[0];
-				$caller = new CommandCaller($this, $update->message);
 
 				if (isset($this->aliases[$command]))
 					$command = $this->aliases[$command];

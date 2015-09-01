@@ -1,10 +1,10 @@
 <?php
 namespace Telegram\Util;
 
-
+use Telegram\Types\IType;
 use Telegram\Types\ReplyKeyboardMarkup;
 
-class KeyboardBuilder
+class KeyboardBuilder extends IType
 {
 	/**
 	 * @var string[][]
@@ -107,5 +107,12 @@ class KeyboardBuilder
 	public function keyboard()
 	{
 		return new ReplyKeyboardMarkup($this->buttons, $this->resize_keyboard, $this->one_time_keyboard, $this->selective);
+	}
+
+	/**
+	 * @return string
+	 */
+	public function toJSON(){
+		return $this->keyboard()->toJSON();
 	}
 }
