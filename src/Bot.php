@@ -146,7 +146,7 @@ class Bot
 			$cancel = false;
 
 			foreach($this->filters as $filter){
-				if(!$filter->filter($update->message, $caller)) {
+				if(!$filter->filter($update->message->text, $caller)) {
 					$cancel = true;
 					break;
 				}
