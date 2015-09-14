@@ -46,7 +46,7 @@ $bot = new Telegram\Bot('API_TOKEN');
 $bot->addCommand('helloworld', new HelloWorldCommand());
 $bot->work();
 ```
-And now, just send te message "/helloworld" to the bot!
+And now, just send the message "/helloworld" to the bot!
 ![KeyboardBuilder result](http://ndat.nl/f1436874735.png)
 
 ### Telegram\Api
