@@ -45,7 +45,7 @@ class ReplyKeyboardMarkup extends IType
 		return json_encode([
 			'keyboard' => $this->keyboard,
 			'resize_keyboard' => $this->resize_keyboard,
-			'one_tme_keyboard' => $this->one_time_keyboard,
+			'one_time_keyboard' => $this->one_time_keyboard,
 			'selective' => $this->selective
 		]);
 	}
